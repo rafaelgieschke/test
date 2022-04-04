@@ -1,4 +1,6 @@
 on: push
+env:
+ a: a b c d \'
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -6,6 +8,8 @@ jobs:
     - uses: actions/checkout@HEAD
     - uses: ./test
     - run: |
+       env
+       printf "%s-" ${{env.a}}
        docker login -u ${{github.actor}} -p ${{secrets.GITHUB_TOKEN}} ghcr.io
        cd test
        docker build -t ghcr.io/${{github.repository}} .
