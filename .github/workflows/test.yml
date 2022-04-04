@@ -16,10 +16,10 @@ jobs:
        docker login
     - uses: docker/login-action@HEAD
       with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
     - run: |
         cd test
-        docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
-        docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        docker build -t ghcr.io/${{github.repository}} .
+        docker push ghcr.io/${{github.repository}}
