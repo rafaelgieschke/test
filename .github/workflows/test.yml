@@ -10,8 +10,13 @@ jobs:
     #   docker login -u github -p ${{github.token}} "$image"
     #   docker build -t "$image" .
     #   docker push "$image"
-    - uses: ncipollo/release-action@v1
+    #- uses: ncipollo/release-action@v1
+    #  with:
+    #    artifacts: "Dockerfile"
+    #    tag: ${{github.ref_name}}
+    #    commit: ${{github.sha}}
+    - uses: marvinpinto/action-automatic-releases
       with:
-        artifacts: "Dockerfile"
-        tag: ${{github.ref_name}}
-        commit: ${{github.sha}}
+         automatic_release_tag: ${{github.ref_name}}-nightly
+         files: Dockerfile
+
