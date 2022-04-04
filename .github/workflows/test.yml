@@ -11,6 +11,8 @@ jobs:
        ls -la
        ls -la /
        mount
+       cat /home/runner/.docker/config.json
+       env
        docker login
     - uses: docker/login-action@HEAD
       with:
