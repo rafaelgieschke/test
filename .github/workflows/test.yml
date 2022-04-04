@@ -1,15 +1,17 @@
 on: push
-env:
- a: "a b c d \" '"
- b: ${{secrets.TEST1}}
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@HEAD
-    - env:
-        image: ghcr.io/${{github.repository}}:${{github.ref_name}}
-      run: |
-       docker login -u github -p ${{github.token}} "$image"
-       docker build -t "$image" .
-       docker push "$image"
+    - uses: actions/checkout@v3
+    #- env:
+    #    image: ghcr.io/${{github.repository}}:${{github.ref_name}}
+    #  run: |
+    #   docker login -u github -p ${{github.token}} "$image"
+    #   docker build -t "$image" .
+    #   docker push "$image"
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "Dockerfile"
+        tag: ${{github.ref_name}}
+        commit: ${{github.sha}}
