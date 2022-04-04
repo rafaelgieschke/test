@@ -6,10 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@HEAD
-    - run: |
+    - env:
+        CI_REGISTRY: ghcr.io
+      run: |
        env
        printf '%s-\n' "${{env.a}}"
-       docker login -u ${{github.actor}} -p ${{secrets.GITHUB_TOKEN}} ghcr.io
+       docker login -u ${{github.actor}} -p ${{secrets.GITHUB_TOKEN}} ghcr.io/${{github.repository}}
        cd test
        docker build -t ghcr.io/${{github.repository}} .
        docker push ghcr.io/${{github.repository}}
