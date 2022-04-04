@@ -17,6 +17,7 @@ jobs:
     #    commit: ${{github.sha}}
     - uses: marvinpinto/action-automatic-releases@latest
       with:
+         repo_token: ${{github.token}}
          automatic_release_tag: ${{github.ref_name}}-nightly
          files: Dockerfile
 
