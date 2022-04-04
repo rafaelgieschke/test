@@ -3,6 +3,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout
     - run: |
        cat /proc/cpuinfo
        pwd
