@@ -8,12 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@HEAD
     - env:
-        CI_REGISTRY: ghcr.io
+        image: ghcr.io/${{github.repository}}:${{github.ref_name}}
       run: |
-       env
-       printf '%s-\n' "$a"
-       printf '%s-\n' "$b" | base64
-       docker login -u github -p ${{secrets.GITHUB_TOKEN}} ghcr.io/${{github.repository}}
-       cd test
-       docker build -t ghcr.io/${{github.repository}} .
-       docker push ghcr.io/${{github.repository}}
+       docker login -u github -p ${{github.token}} "$image"
+       docker build -t "$image" .
+       docker push "$image"
