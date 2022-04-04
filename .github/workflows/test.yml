@@ -1,6 +1,6 @@
 on: push
 env:
- a: a b c d \'
+ a: "a b c d '"
 jobs:
   test:
     runs-on: ubuntu-latest
