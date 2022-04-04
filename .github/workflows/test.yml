@@ -15,7 +15,7 @@ jobs:
     #    artifacts: "Dockerfile"
     #    tag: ${{github.ref_name}}
     #    commit: ${{github.sha}}
-    - uses: marvinpinto/action-automatic-releases
+    - uses: marvinpinto/action-automatic-releases@latest
       with:
          automatic_release_tag: ${{github.ref_name}}-nightly
          files: Dockerfile
