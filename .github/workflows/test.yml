@@ -1,7 +1,7 @@
 on: push
 env:
  a: "a b c d \" '"
- b: {{$secrets.TEST1}}
+ b: ${{secrets.TEST1}}
 jobs:
   test:
     runs-on: ubuntu-latest
