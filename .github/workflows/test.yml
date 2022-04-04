@@ -15,9 +15,15 @@ jobs:
     #    artifacts: "Dockerfile"
     #    tag: ${{github.ref_name}}
     #    commit: ${{github.sha}}
-    - uses: marvinpinto/action-automatic-releases@latest
+    #- uses: marvinpinto/action-automatic-releases@latest
+    #  with:
+    #     repo_token: ${{github.token}}
+    #     automatic_release_tag: ${{github.ref_name}}-nightly
+    #     files: Dockerfile
+    - uses: softprops/action-gh-release@v1
       with:
-         repo_token: ${{github.token}}
-         automatic_release_tag: ${{github.ref_name}}-nightly
-         files: Dockerfile
+        files: Dockerfile
+        tag_name: ${{github.ref_name}}-nightly
+        prerelease: true
+        target_commitish: ${{github.sha}}
 
