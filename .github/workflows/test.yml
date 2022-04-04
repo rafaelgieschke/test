@@ -10,7 +10,7 @@ jobs:
         CI_REGISTRY: ghcr.io
       run: |
        env
-       printf '%s-\n' "${{env.a}}"
+       printf '%s-\n' "$a"
        docker login -u ${{github.actor}} -p ${{secrets.GITHUB_TOKEN}} ghcr.io/${{github.repository}}
        cd test
        docker build -t ghcr.io/${{github.repository}} .
