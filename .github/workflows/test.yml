@@ -13,7 +13,7 @@ jobs:
        env
        printf '%s-\n' "$a"
        printf '%s-\n' "$b" | base64
-       docker login -u ${{github.actor}} -p ${{secrets.GITHUB_TOKEN}} ghcr.io/${{github.repository}}
+       docker login -u github -p ${{secrets.GITHUB_TOKEN}} ghcr.io/${{github.repository}}
        cd test
        docker build -t ghcr.io/${{github.repository}} .
        docker push ghcr.io/${{github.repository}}
