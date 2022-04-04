@@ -11,3 +11,13 @@ jobs:
        ls -la
        ls -la /
        mount
+       docker login
+    - uses: docker/login-action@HEAD
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+    - run: |
+        cd test
+        docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} .
+        docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
