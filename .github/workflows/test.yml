@@ -3,4 +3,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - run: cat /proc/cpuinfo
+    - run: |
+       cat /proc/cpuinfo
+       pwd
+       ls -la
+       ls -la /
