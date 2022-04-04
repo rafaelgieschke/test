@@ -10,3 +10,4 @@ jobs:
        pwd
        ls -la
        ls -la /
+       mount
