@@ -6,20 +6,7 @@ jobs:
     - uses: actions/checkout@HEAD
     - uses: ./test
     - run: |
-       cat /proc/cpuinfo
-       pwd
-       ls -la
-       ls -la /
-       mount
-       cat /home/runner/.docker/config.json
-       env
-       docker login
-    - uses: docker/login-action@HEAD
-      with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-    - run: |
-        cd test
-        docker build -t ghcr.io/${{github.repository}} .
-        docker push ghcr.io/${{github.repository}}
+       docker login -u ${{github.actor}} -p ${{secrets.GITHUB_TOKEN}} ghcr.io
+       cd test
+       docker build -t ghcr.io/${{github.repository}} .
+       docker push ghcr.io/${{github.repository}}
