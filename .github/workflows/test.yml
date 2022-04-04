@@ -13,7 +13,7 @@ jobs:
        mount
        docker login
     - uses: docker/login-action@HEAD
-        with:
+      with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
