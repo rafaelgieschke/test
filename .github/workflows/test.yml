@@ -4,7 +4,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: df -h; ls -la /dev
+    - run: df -h; ls -la /dev; lsblk
     #- env:
     #    image: ghcr.io/${{github.repository}}:${{github.ref_name}}
     #  run: |
