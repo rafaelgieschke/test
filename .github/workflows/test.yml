@@ -5,10 +5,11 @@ jobs:
     steps:
     - run: |
         brew install lima
-        echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > container.yaml
-        limactl start --name container container.yaml
-        limactl shell docker run ubuntu cat /proc/meminfo
-        limactl shell docker run --privileged --rm tonistiigi/binfmt --install arm64
+        mkdir -p ~/.lima/_config
+        echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > ~/.lima/_config/default.yaml
+        limactl start
+        limactl shell default run ubuntu cat /proc/meminfo
+        limactl shell default run --privileged --rm tonistiigi/binfmt --install arm64
         exit
         brew install minikube hyperkit docker
         minikube config set cpus 3
