@@ -4,6 +4,12 @@ jobs:
     runs-on: macos-12
     steps:
     - run: |
+        brew install lima
+        echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > container.yaml
+        lima start --name container container.yaml
+        limactl shell docker run ubuntu cat /proc/meminfo
+        limactl shell docker run --privileged --rm tonistiigi/binfmt --install arm64
+        exit
         brew install minikube hyperkit docker
         minikube config set cpus 3
         minikube config set memory 12g
