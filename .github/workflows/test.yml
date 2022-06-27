@@ -5,7 +5,7 @@ jobs:
     steps:
     - run: |
         brew install minikube hyperkit docker
-        minikube config set cpus 6
+        minikube config set cpus 3
         minikube config set memory 12g
         minikube start --driver=hyperkit --container-runtime=docker
         minikube kubectl get nodes
