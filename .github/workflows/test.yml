@@ -1,6 +1,20 @@
 on: push
 jobs:
+  docker:
+    runs-on: macos-12
+    steps:
+    - run: |
+        brew install minikube hyperkit docker
+        minikube config set cpus 6
+        minikube config set memory 12g
+        minikube start --driver=hyperkit --container-runtime=docker
+        minikube kubectl get nodes
+        eval "$(minikube docker-env)"
+        docker info
+        docker run ubuntu cat /etc/cpuinfo
+        docker run ubuntu cat /etc/meminfo
   test:
+    if: false
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
