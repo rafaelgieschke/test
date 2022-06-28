@@ -4,10 +4,13 @@ jobs:
     runs-on: macos-12
     steps:
     - run: |
+        vm_stat
         brew install docker colima
         colima start --cpu 3 --memory 12
         docker run ubuntu cat /proc/meminfo
         docker run ubuntu df -h
+        vm_stat
+        top
         exit
         brew install lima
         mkdir -p ~/.lima/_config
