@@ -8,8 +8,9 @@ jobs:
         mkdir -p ~/.lima/_config
         echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > ~/.lima/_config/default.yaml
         limactl start
-        limactl shell default docker run ubuntu cat /proc/meminfo
-        limactl shell default docker run --privileged --rm tonistiigi/binfmt --install arm64
+        lima cat /proc/cpuinfo
+        lima nerdctl run ubuntu cat /proc/meminfo
+        lima nerdctl run --privileged --rm tonistiigi/binfmt --install arm64
         exit
         brew install minikube hyperkit docker
         minikube config set cpus 3
