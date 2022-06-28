@@ -4,6 +4,11 @@ jobs:
     runs-on: macos-12
     steps:
     - run: |
+        brew install docker colima
+        colima start --cpu 3 --memory 12
+        docker run ubuntu cat /proc/meminfo
+        docker run --privileged --rm tonistiigi/binfmt --install arm64
+        exit
         brew install lima
         mkdir -p ~/.lima/_config
         echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > ~/.lima/_config/default.yaml
