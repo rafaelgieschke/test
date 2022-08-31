@@ -55,15 +55,13 @@ jobs:
     - uses: actions/github-script@v6
       with:
         script: |
-        try {
-          await github.rest.git.updateRef({
+          github.rest.git.updateRef({
             owner: context.repo.owner,
             repo: context.repo.repo,
             force: true,
             sha: context.sha,
             ref: "refs/tags/test2",
-          })
-        } catch {}
+          }).catch(console.log)
     - uses: softprops/action-gh-release@v1
       with:
         files: Dockerfile
