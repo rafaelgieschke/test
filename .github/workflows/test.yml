@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: df -h; ls -la /dev; lsblk; ls
+    - run: df -h; ls -la /dev; lsblk; ls; cat /proc/cpuinfo
     #- env:
     #    image: ghcr.io/${{github.repository}}:${{github.ref_name}}
     #  run: |
