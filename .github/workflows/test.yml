@@ -58,6 +58,7 @@ jobs:
           github.rest.git.createRef({
             owner: context.repo.owner,
             repo: context.repo.repo,
+            force: true,
             sha: context.sha,
             ref: "refs/tags/test",
           })
