@@ -60,7 +60,7 @@ jobs:
             repo: context.repo.repo,
             force: true,
             sha: context.sha,
-            ref: "refs/tags/test",
+            ref: "refs/tags/test2",
           })
     - uses: softprops/action-gh-release@v1
       with:
