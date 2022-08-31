@@ -55,7 +55,7 @@ jobs:
     - uses: actions/github-script@v6
       with:
         script: |
-          octokit.rest.git.createRef({
+          github.rest.git.createRef({
             owner: context.repo.owner,
             repo: context.repo.repo,
             sha: context.sha,
