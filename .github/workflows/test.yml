@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: pwd; pwd -P; sudo ls -laR /mnt; cat /mnt/DATALOSS_WARNING_README.txt; df -h; ls -la /dev; lsblk; ls; cat /proc/cpuinfo > cpuinfo.txt
+    - run: id; pwd; pwd -P; sudo ls -laR /mnt; cat /mnt/DATALOSS_WARNING_README.txt; df -h; ls -la /dev; lsblk; ls; cat /proc/cpuinfo > cpuinfo.txt
     - uses: actions/upload-artifact@HEAD
       with:
        path: cpuinfo.txt
