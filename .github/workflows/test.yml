@@ -34,7 +34,7 @@ jobs:
     if: true
     runs-on: ubuntu-latest
     steps:
-    - run: ls -laR /home
+    - run: ls -laR /home || :
     - run: pwd -P; pwd
     - uses: actions/checkout@v3
     - run: id; pwd; pwd -P; sudo ls -laR /mnt; cat /mnt/DATALOSS_WARNING_README.txt; df -h; ls -la /dev; lsblk; ls; cat /proc/cpuinfo > cpuinfo.txt
