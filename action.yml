@@ -1,0 +1,6 @@
+runs:
+  using: "composite"
+  steps:
+    - run: echon action.yml; echon "$0"; env; pwd -P
+  env:
+    action_path: ${{ github.action_path }}
