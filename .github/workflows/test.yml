@@ -36,7 +36,7 @@ jobs:
     steps:
     - run: printf '%s\n' "$A"
       env:
-        A: ${{join(fromJSON(format('[[1,2,3],{0}]'), github.*).*.*)}}
+        A: ${{join(fromJSON(format('[{0},[1,2,3]]'), github.*).*.*)}}
     - run: ls -laR /home || true
     - run: pwd -P; pwd
     - uses: actions/checkout@v3
