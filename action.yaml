@@ -1,7 +1,7 @@
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@@
+    - uses: actions/checkout@HEAD
       with:
         repository: ${{ github.action_repository }}
         ref: ${{ github.action_ref }}
