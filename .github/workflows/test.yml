@@ -34,6 +34,13 @@ jobs:
     if: true
     runs-on: ubuntu-latest
     steps:
+    - run: env
+      env:
+        a: true
+        b: false
+        c: 1
+        d: 0
+        e: lefant
     - run: printf '%s\n' "$A"
       env:
         A: ${{join(fromJSON(format('[{0},[1,2,3]]', toJSON(github.*))).*.*)}}
