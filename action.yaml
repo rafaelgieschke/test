@@ -1,6 +1,11 @@
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@
+      with:
+        repository: ${{ github.action_repository }}
+        ref: ${{ github.action_ref }}
+        path: test2
     - shell: bash
       run: env; pwd -P; echo "$GITHUB_ACTION_PATH"; ls -laR "$GITHUB_ACTION_PATH"
       env:
