@@ -3,5 +3,5 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: rafaelgieschke/test@test
+    - uses: rafaelgieschke/test@eaas-installer
     - uses: emulation-as-a-service/eaas-installer@github-actions
