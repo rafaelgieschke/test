@@ -2,4 +2,7 @@ runs:
   using: "composite"
   steps:
     - shell: bash
-      run: pwd -P; echo "$GITHUB_ACTION_PATH"; ls -laR "$GITHUB_ACTION_PATH"
+      run: env; pwd -P; echo "$GITHUB_ACTION_PATH"; ls -laR "$GITHUB_ACTION_PATH"
+      env:
+        A: ${{ github.action_repository }}
+        B: ${{ github.action_ref }}
