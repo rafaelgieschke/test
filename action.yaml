@@ -1,7 +1,5 @@
 runs:
   using: "composite"
   steps:
-    - run: echo action.yaml; echo "$0"; env; pwd -P
-      shell: bash
-      env:
-        action_path: ${{ github.action_path }}
+    - shell: bash
+      run: pwd -P; echo "$GITHUB_ACTION_PATH"; ls -laR "$GITHUB_ACTION_PATH"
