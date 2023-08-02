@@ -1,0 +1,3 @@
+[submodule "eaas-installer"]
+	path = eaas-installer
+	url = https://eaas.dev/eaas-installer
