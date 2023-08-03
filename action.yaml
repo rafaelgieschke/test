@@ -4,7 +4,7 @@ runs:
     - uses: actions/checkout@HEAD
       with:
         repository: ${{ env.action_repository }}
-        ref:
+        ref: ""
         # ref: ${{ env.action_ref }}
         path: test2
       env:
