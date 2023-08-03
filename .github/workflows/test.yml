@@ -7,6 +7,5 @@ jobs:
       with:
         repository: actions/checkout
         ref: ""
-    - uses: /test
     - uses: rafaelgieschke/test@eaas-installer
     - uses: emulation-as-a-service/eaas-installer@github-actions
