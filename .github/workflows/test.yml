@@ -8,5 +8,4 @@ jobs:
     #    repository: actions/checkout
     #    ref: ""
     #- uses: rafaelgieschke/test@eaas-installer
-    - uses: emulation-as-a-service/eaas-installer@HEAD
-
+    - uses: emulation-as-a-service/eaas-installer@@
