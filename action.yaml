@@ -10,6 +10,7 @@ runs:
       env:
         action_repository: ${{ github.action_repository }}
         action_ref: ${{ github.action_ref }}
+    - uses: eaas-installer
     - shell: bash
       run: env; pwd -P; echo "$GITHUB_ACTION_PATH"; ls -laR "$GITHUB_ACTION_PATH"
       env:
