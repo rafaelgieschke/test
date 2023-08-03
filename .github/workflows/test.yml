@@ -3,5 +3,10 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
+    - uses: actions/checkout@HEAD
+      with:
+        repository: actions/checkout
+        ref: ""
+    - uses: test
     - uses: rafaelgieschke/test@eaas-installer
     - uses: emulation-as-a-service/eaas-installer@github-actions
