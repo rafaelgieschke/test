@@ -34,6 +34,11 @@ jobs:
     if: true
     runs-on: ubuntu-latest
     steps:
+    - uses: docker://ubuntu
+      with:
+        args:
+          - ls
+          - -la
     - run: env
       env:
         a: true
