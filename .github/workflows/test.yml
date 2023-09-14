@@ -4,7 +4,7 @@ jobs:
     if: true
     runs-on: ubuntu-latest
     steps:
-    - run: env
+    - run: env | base64
       env:
         newline: ${{ secrets.newline }}
         nonewline: ${{ secrets.nonewline }}
