@@ -1,39 +1,13 @@
 on: push
 jobs:
-  docker-macos:
-    if: false
-    runs-on: macos-12
-    steps:
-    - run: |
-        vm_stat
-        brew install docker colima
-        colima start --cpu 3 --memory 12
-        docker run ubuntu cat /proc/meminfo
-        docker run ubuntu df -h
-        vm_stat
-        top
-        exit
-        brew install lima
-        mkdir -p ~/.lima/_config
-        echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > ~/.lima/_config/default.yaml
-        limactl start
-        lima cat /proc/cpuinfo
-        lima nerdctl run ubuntu cat /proc/meminfo
-        lima nerdctl run --privileged --rm tonistiigi/binfmt --install arm64
-        exit
-        brew install minikube hyperkit docker
-        minikube config set cpus 3
-        minikube config set memory 12g
-        minikube start --driver=hyperkit --container-runtime=docker
-        minikube kubectl get nodes
-        eval "$(minikube docker-env)"
-        docker info
-        docker run ubuntu cat /etc/cpuinfo
-        docker run ubuntu cat /etc/meminfo
   test:
     if: true
     runs-on: ubuntu-latest
     steps:
+    - run: env
+      env:
+        newline: ${{ secrets.newline }}
+        nonewline: ${{ secrets.nonewline }}
     - uses: docker://ubuntu
       with:
         args: printf %s- "1 \"2" 3
@@ -90,4 +64,33 @@ jobs:
         prerelease: true
         target_commitish: ${{github.sha}}
 
-
+  docker-macos:
+    if: false
+    runs-on: macos-12
+    steps:
+    - run: |
+        vm_stat
+        brew install docker colima
+        colima start --cpu 3 --memory 12
+        docker run ubuntu cat /proc/meminfo
+        docker run ubuntu df -h
+        vm_stat
+        top
+        exit
+        brew install lima
+        mkdir -p ~/.lima/_config
+        echo '{"cpus": 3, "memory": "12GiB", "containerd": {"system": true, "user": false}}' > ~/.lima/_config/default.yaml
+        limactl start
+        lima cat /proc/cpuinfo
+        lima nerdctl run ubuntu cat /proc/meminfo
+        lima nerdctl run --privileged --rm tonistiigi/binfmt --install arm64
+        exit
+        brew install minikube hyperkit docker
+        minikube config set cpus 3
+        minikube config set memory 12g
+        minikube start --driver=hyperkit --container-runtime=docker
+        minikube kubectl get nodes
+        eval "$(minikube docker-env)"
+        docker info
+        docker run ubuntu cat /etc/cpuinfo
+        docker run ubuntu cat /etc/meminfo
