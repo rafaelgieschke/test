@@ -1,7 +1,7 @@
 on:
   push:
   schedule:
-    - cron: 49 11 * * *
+    - cron: 58 11 * * *
 
 jobs:
   test2:
