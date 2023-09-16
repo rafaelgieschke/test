@@ -1,5 +1,14 @@
-on: push
+on:
+  push:
+  schedule:
+    - cron: 48 13 * * *
+
 jobs:
+  test2:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+    - run: "false"
   test:
     if: true
     runs-on: ubuntu-latest
