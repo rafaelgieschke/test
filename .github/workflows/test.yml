@@ -6,7 +6,7 @@ on:
     inputs:
       newline:
         type: string
-        default: ${{ secrets.newline }}
+        default: ${{ vars.ele }}
 
 jobs:
   test2:
