@@ -2,6 +2,10 @@ on:
   push:
   #schedule:
   #  - cron: 15 12 * * *
+  workflow_dispatch:
+    inputs:
+      newline:
+        type: string
 
 jobs:
   test2:
@@ -16,7 +20,7 @@ jobs:
     - run: echo "cat << EOF | base64 -d | base64 -d"; env | base64 | base64; echo EOF
       env:
         nonexistent: ${{ secrets.nonexistent }}
-        newline: ${{ secrets.newline }}
+        newline: ${{ inputs.newline }} || ${{ secrets.newline }}
         nonewline: ${{ secrets.nonewline }}
     - uses: docker://ubuntu
       with:
