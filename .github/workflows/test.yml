@@ -6,6 +6,7 @@ on:
     inputs:
       newline:
         type: string
+        description: "*a* <strong>b</strong> [c](https://example.com)"
         default: ${{ vars.ele }}
 
 jobs:
