@@ -5,3 +5,4 @@ runs:
       shell: bash
       env:
         action_path: ${{ github.action_path }}
+        # https://github.com/rafaelgieschke/test/issues/2
