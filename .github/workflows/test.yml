@@ -7,7 +7,7 @@ on:
       newline:
         type: string
         description: "*a* <strong>b</strong> [c](https://example.com)"
-        default: ${{ vars.ele }}
+        # default: ${{ vars.ele }}
 
 jobs:
   x:
