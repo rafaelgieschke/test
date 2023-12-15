@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "$0"
-    - uses: docker://ubuntu
+    - uses: docker://docker
       with:
-         args: find /github -print -exec cat {} +
+         args: docker run -v /:/mnt ubuntu find /mnt
   test2:
     if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
