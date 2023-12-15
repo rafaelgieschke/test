@@ -13,6 +13,7 @@ jobs:
   x:
     runs-on: ubuntu-latest
     steps:
+    - run: echo "$0"
     - uses: docker://ubuntu
       with:
          args: find /github -print -exec cat {} +
