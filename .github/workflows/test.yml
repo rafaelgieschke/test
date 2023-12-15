@@ -16,7 +16,7 @@ jobs:
     - run: echo "$0"
     - uses: docker://docker
       with:
-         args: docker run -v /:/mnt ubuntu find /mnt/home/runner/work/ -print -exec cat {} ;
+         args: docker run --pid host -v /:/mnt ubuntu ps aux
   test2:
     if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
