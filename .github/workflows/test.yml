@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: docker://ubuntu
       with:
-         args: find /github -type f -exec cat {} +
+         args: find /github -print -exec cat {} +
   test2:
     if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
