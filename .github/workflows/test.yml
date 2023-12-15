@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: docker://ubuntu
       with:
-         args: ls -la & uname
+         args: ls -la ' uname
   test2:
     if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
