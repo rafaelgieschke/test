@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+
+permissions:
+  deployments: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.name || vars.name }}
+    env:
+      name: ${{ inputs.name || vars.name }}
+    steps:
+      - run: |
+          date -Is
