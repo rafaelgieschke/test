@@ -3,6 +3,8 @@ on:
     inputs:
       name:
         type: string
+      url:
+        type: string
 
 permissions:
   deployments: write
@@ -12,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.name || vars.name }}
+      url: ${{ inputs.url }}
     env:
       name: ${{ inputs.name || vars.name }}
     steps:
