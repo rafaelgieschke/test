@@ -5,7 +5,8 @@ on:
         type: string
       url:
         type: string
-
+      sleep:
+        type: number
 permissions:
   deployments: write
 
@@ -17,6 +18,8 @@ jobs:
       url: ${{ inputs.url }}
     env:
       name: ${{ inputs.name || vars.name }}
+      sleep: ${{ input.sleep || 0 }}
     steps:
       - run: |
           date -Is
+          sleep "$sleep"
