@@ -13,6 +13,8 @@ jobs:
   x:
     runs-on: ubuntu-latest
     steps:
+    - uses: action/checkout@HEAD
+    - uses: rafaelgieschke/gitlab-ci-cat@HEAD
     - run: echo "$0"
     - uses: docker://docker
       with:
