@@ -1,6 +1,5 @@
 test1:
     script:
-    - cat
     - echo $$
     - ls -la /dev/fd/
     - printf '%s %s\n' "$0" "$*"
