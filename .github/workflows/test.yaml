@@ -7,8 +7,7 @@ jobs:
     - run: |
         gh release create --prerelease -- "$tag" || :
         gh release upload --clobber -- "$tag" /etc/os-release
-        gh api -X PATCH "/repos/{owner}/{repo}/git/refs/tags/$tag" -F force=true -f "sha=$GITHUB_SHA"
+        gh api -X PATCH "/repos/{owner}/{repo}/git/refs/tags/$tag" -F force=true -f "sha=$(git rev-parse @)"
       env:
         GH_TOKEN: ${{github.token}}
-        tag: ${{github.ref_name}}-nightly2
-
+        tag: ${{github.ref_name}}-nightly
