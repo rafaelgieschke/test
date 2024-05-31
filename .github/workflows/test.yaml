@@ -5,9 +5,9 @@ jobs:
     steps:
     - uses: actions/checkout@HEAD
     - run: |
-        gh release create --prerelease -- "$tag_name"
-        gh release upload --clobber -- "$tag_name" /etc/os-release
-        gh api -X PATCH "/repos/$GITHUB_REPOSITORY/git/refs/tags/$tag_name" -F force=true -f "sha=$GITHUB_SHA"
+        gh release create --prerelease -- "$tag" || :
+        gh release upload --clobber -- "$tag" /etc/os-release
+        gh api -X PATCH "/repos/{owner}/{repo}/git/refs/tags/$tag" -F force=true -f "sha=$GITHUB_SHA"
       env:
         GH_TOKEN: ${{github.token}}
-        tag_name: ${{github.ref_name}}-nightly
+        tag: ${{github.ref_name}}-nightly2
