@@ -1,9 +1,0 @@
-test1:
-    script:
-    - echo $$
-    - ls -la /dev/fd/
-    - printf '%s %s\n' "$0" "$*"
-    - ls -la
-    - pwd
-    - ls -la ..
-    - echo $$

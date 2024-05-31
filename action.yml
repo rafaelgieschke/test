@@ -1,8 +1,0 @@
-runs:
-  using: "composite"
-  steps:
-    - run: echo action.yml; echo "$0"; env; pwd -P
-      shell: bash
-      env:
-        action_path: ${{ github.action_path }}
-        # TODO: https://github.com/rafaelgieschke/test/issues/2
