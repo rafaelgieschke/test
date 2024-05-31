@@ -84,7 +84,7 @@ jobs:
           }).catch(console.log)
     - run: gh api -X PATCH "/repos/$GITHUB_REPOSITORY/git/refs/tags/$tag_name" -F force=true -f "sha=$GITHUB_SHA" || ":"
       env:
-        tag_name: ${{github.ref_name}}-nightly2
+        tag_name: ${{github.ref_name}}-nightly
         GH_TOKEN: ${{github.token}}
     - uses: softprops/action-gh-release@v1
       with:
