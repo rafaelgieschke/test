@@ -1,8 +1,8 @@
 on: push
 jobs:
- test:
-   runs-on: ubuntu-latest
-   steps:
+  test:
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@HEAD
     - run: |
         gh release upload -- "$tag_name" /etc/os-release
