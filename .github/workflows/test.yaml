@@ -5,7 +5,8 @@ jobs:
     steps:
     - uses: actions/checkout@HEAD
     - run: |
-        gh release upload -- "$tag_name" /etc/os-release
+        gh release create
+        gh release upload --clobber -- "$tag_name" /etc/os-release
         gh api -X PATCH "/repos/$GITHUB_REPOSITORY/git/refs/tags/$tag_name" -F force=true -f "sha=$GITHUB_SHA"
       env:
         GH_TOKEN: ${{github.token}}
