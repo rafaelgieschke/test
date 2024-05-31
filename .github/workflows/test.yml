@@ -82,6 +82,9 @@ jobs:
             sha: context.sha,
             ref: "refs/tags/test2",
           }).catch(console.log)
+    - run: gh api -X PATCH "/repos/$GITHUB_REPOSITORY/git/refs/tags/$tag_name" -F force=true -f "sha=$GITHUB_SHA"
+      env:
+        tag_name: ${{github.ref_name}}-nightly
     - uses: softprops/action-gh-release@v1
       with:
         files: Dockerfile
