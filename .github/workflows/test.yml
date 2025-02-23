@@ -10,6 +10,10 @@ on:
         # default: ${{ vars.ele }}
 
 jobs:
+  enable:
+    runs-on: ubuntu-latest
+    steps:
+    - run: gh workflow list -a --json id -q '.[].id' | xargs -L1 -- gh workflow enable --
   x:
     runs-on: ubuntu-latest
     steps:
