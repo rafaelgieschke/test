@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: gh workflow list -a --json id -q '.[].id' | xargs -L1 -- gh workflow enable --
+    env:
+      GH_TOKEN: ${{ github.token }}
   x:
     runs-on: ubuntu-latest
     steps:
