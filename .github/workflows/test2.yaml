@@ -7,9 +7,9 @@ jobs:
         df -h
         ls
         docker system info
-        sudo systemctl stop dockerd
+        sudo systemctl stop docker
         sudo mv /var/lib/docker /mnt/
         sudo ln -s /mnt/docker /var/lib/docker
-        sudo systemctl start dockerd
+        sudo systemctl start docker
         docker system info
   
