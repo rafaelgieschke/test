@@ -6,3 +6,9 @@ jobs:
     - run: |
         df -h
         docker system info
+        systemctl stop dockerd
+        mv /var/lib/docker /mnt/
+        ln -s /mnt/docker /var/lib/docker
+        systemctl start dockerd
+        docker system info
+  
