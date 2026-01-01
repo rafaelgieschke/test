@@ -1,0 +1,50 @@
+
+on: push
+env:
+  ELE: FANT
+jobs:
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        ls -la /home/runner/runners/*/externals/
+        which node
+        node --version
+    - run: env
+    - run: |
+        tag=nightly
+  
+        # git config user.name "github-actions[bot]"
+        # git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        # export GIT_AUTHOR_DATE="1970-01-01T00:00Z" GIT_COMMITTER_DATE="1970-01-01T00:00Z"
+        # git push origin "$(git commit-tree "$(git mktree </dev/null)" </dev/null):refs/tags/$tag" || :
+
+        git push origin "$(GIT_AUTHOR_DATE="1970-01-01T00:00Z" GIT_COMMITTER_DATE="1970-01-01T00:00Z" \
+          git -c user.name="github-actions[bot]" \
+          -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+          commit-tree "$(git mktree </dev/null)" </dev/null):refs/tags/$tag" || :
+
+        git push origin "$(GIT_AUTHOR_DATE="1970-01-01T00:00Z" GIT_COMMITTER_DATE="1970-01-01T00:00Z" git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit-tree "$(git mktree </dev/null)" -m "Initial commit"):refs/tags/nightly-build" || :
+        lsblk
+        lspci
+        df -h
+        find /mnt || :
+        id
+        set +e
+        dpkg -l
+        python -c "import yaml; print(yaml.dump(dict((k, repr(v)) for k, v in vars(yaml).items())))"
+        df -h
+        swapon -s
+        ls -laR /mnt
+        id
+        sudo fdisk -l /dev/sda
+        sudo fdisk -l /dev/sdb
+        ls -la /dev
+        mount
+        blkid
+    - run: |
+        pwd
+        cd /
+    - run: |
+        pwd
